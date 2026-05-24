@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Praneeth Sholapur | Data & Business Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0B1F3A;--accent:#2A6EBB;--warm:#F5F3EE;
+  --text:#1a1a2e;--muted:#5a6475;--border:#dde3ec;
+  --white:#ffffff;--green:#0d6b3a;--green-light:#dcf5e8;
+  --coral:#E05A3A;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--white);line-height:1.6;font-size:15px;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;z-index:100;width:100%;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy)}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--muted);letter-spacing:0.3px;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--navy)!important;color:white!important;padding:7px 16px;border-radius:6px;font-size:13px!important;transition:background 0.2s!important}
+.nav-cta:hover{background:var(--accent)!important;color:white!important}
+
+/* ── HERO ── */
+.hero{min-height:100vh;background:var(--navy);display:flex;align-items:center;padding:100px 48px 80px;position:relative;overflow:hidden}
+.hero-bg-circle1{position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;border:80px solid rgba(42,110,187,0.1);pointer-events:none}
+.hero-bg-circle2{position:absolute;bottom:-120px;left:20%;width:300px;height:300px;border-radius:50%;border:50px solid rgba(255,255,255,0.03);pointer-events:none}
+.hero-bg-circle3{position:absolute;top:30%;right:15%;width:200px;height:200px;border-radius:50%;border:30px solid rgba(42,110,187,0.06);pointer-events:none}
+.hero-inner{max-width:800px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(42,110,187,0.2);border:1px solid rgba(42,110,187,0.35);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;color:#9dc6f5;margin-bottom:28px}
+.badge-dot{width:7px;height:7px;background:#4caf88;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-family:'DM Serif Display',serif;font-size:58px;line-height:1.08;font-weight:400;color:white;margin-bottom:20px;letter-spacing:-1.5px}
+.hero h1 em{color:#9dc6f5;font-style:italic}
+.hero-sub{font-size:17px;color:rgba(255,255,255,0.6);max-width:580px;margin-bottom:16px;font-weight:300;line-height:1.75}
+.hero-location{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:40px;display:flex;align-items:center;gap:6px}
+.hero-location::before{content:'📍';font-size:12px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:56px}
+.btn-primary{background:var(--accent);color:white;padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;transition:all 0.2s;display:inline-block}
+.btn-primary:hover{background:#1d5a9e;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.75);padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:400;font-size:14px;border:1px solid rgba(255,255,255,0.2);transition:all 0.2s;display:inline-block}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.5);color:white}
+.hero-stats{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.1);padding-top:40px}
+.stat-item{flex:1;padding-right:32px;border-right:1px solid rgba(255,255,255,0.08)}
+.stat-item:last-child{border-right:none;padding-right:0;padding-left:32px}
+.stat-item:not(:first-child){padding-left:32px}
+.stat-item strong{display:block;font-family:'DM Serif Display',serif;font-size:32px;font-weight:400;color:white;line-height:1;margin-bottom:6px}
+.stat-item span{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.8px;font-weight:500}
+
+/* ── SKILLS STRIP ── */
+.skills-strip{background:var(--warm);padding:20px 48px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.strip-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:500;margin-right:6px;white-space:nowrap}
+.skill-pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;background:white;border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--text)}
+.skill-pill .dot{width:6px;height:6px;border-radius:50%}
+
+/* ── SECTIONS ── */
+.section{padding:80px 48px}
+.section-label{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent);font-weight:600;margin-bottom:10px}
+.section-title{font-family:'DM Serif Display',serif;font-size:36px;font-weight:400;color:var(--navy);margin-bottom:10px;letter-spacing:-0.5px}
+.section-desc{font-size:15px;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:48px}
+
+/* ── EXPERIENCE ── */
+.exp-section{background:var(--warm);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.exp-timeline{display:flex;flex-direction:column;gap:0}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:48px;padding:40px 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-left{padding-top:4px}
+.exp-period{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:6px}
+.exp-company{font-size:13px;font-weight:600;color:var(--accent)}
+.exp-location{font-size:12px;color:var(--muted);margin-top:4px}
+.exp-right{}
+.exp-role{font-size:20px;font-weight:500;color:var(--navy);margin-bottom:14px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.exp-bullets li{display:flex;gap:10px;font-size:13px;color:var(--muted);line-height:1.6}
+.exp-bullets li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:7px}
+.exp-tags{display:flex;gap:6px;flex-wrap:wrap}
+.exp-tag{font-size:11px;padding:3px 9px;border-radius:4px;background:white;border:1px solid var(--border);color:var(--muted);font-weight:500}
+.exp-impact{display:inline-flex;align-items:center;gap:5px;background:var(--green-light);color:var(--green);font-size:11px;font-weight:600;padding:4px 10px;border-radius:4px;margin-top:12px}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.project-card{background:white;border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;color:inherit;display:block}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(11,31,58,0.1)}
+.project-visual{height:180px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:24px}
+.project-visual-1{background:linear-gradient(135deg,#0B1F3A 0%,#152f52 100%)}
+.project-visual-2{background:linear-gradient(135deg,#1a0533 0%,#2d1058 100%)}
+.vis-bars{display:flex;align-items:flex-end;gap:5px;height:80px;position:relative;z-index:1}
+.vis-bar{flex:1;border-radius:3px 3px 0 0}
+.vis-line{position:relative;z-index:1;width:100%}
+.vis-line svg{width:100%;height:80px}
+.project-badge{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);padding:4px 10px;border-radius:20px;font-size:11px;font-weight:500;color:rgba(255,255,255,0.8)}
+.project-body{padding:24px}
+.project-type{font-size:11px;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;color:var(--accent);margin-bottom:8px}
+.project-body h3{font-size:17px;font-weight:500;color:var(--navy);margin-bottom:10px;line-height:1.4}
+.project-body p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+.project-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:16px}
+.ptag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:4px;background:var(--warm);color:var(--muted);border:1px solid var(--border)}
+.project-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid var(--border);font-size:12px;font-weight:500;color:var(--accent)}
+.ai-badge-small{font-size:10px;background:rgba(42,110,187,0.08);color:var(--accent);padding:3px 8px;border-radius:10px;border:1px solid rgba(42,110,187,0.2)}
+
+/* ── ABOUT / RESUME ── */
+.about-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:start}
+.about-left{}
+.about-photo{background:var(--navy);border-radius:14px;aspect-ratio:3/4;max-height:360px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+.photo-placeholder{display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,0.3)}
+.photo-placeholder svg{width:52px;height:52px}
+.photo-placeholder span{font-size:12px}
+.about-contact{display:flex;flex-direction:column;gap:10px}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);text-decoration:none}
+.contact-item:hover{color:var(--accent)}
+.contact-icon{width:32px;height:32px;border-radius:8px;background:var(--warm);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.about-right{}
+.about-right p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:20px}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px}
+.skill-group{}
+.skill-group-title{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--navy);font-weight:600;margin-bottom:8px}
+.skill-list{display:flex;flex-direction:column;gap:4px}
+.skill-list span{font-size:13px;color:var(--muted)}
+.edu-item{display:flex;gap:14px;margin-bottom:16px}
+.edu-icon{width:36px;height:36px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.edu-info{}
+.edu-info strong{font-size:14px;font-weight:500;color:var(--navy);display:block}
+.edu-info span{font-size:12px;color:var(--muted)}
+.cert-item{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--warm);border:1px solid var(--border);border-radius:8px;margin-bottom:8px}
+.cert-icon{font-size:18px}
+.cert-info strong{font-size:13px;font-weight:500;color:var(--navy);display:block}
+.cert-info span{font-size:11px;color:var(--muted)}
+
+/* ── AI METHODOLOGY ── */
+.ai-section{background:var(--navy);color:white;padding:72px 48px}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ai-left .section-label{color:#9dc6f5}
+.ai-left .section-title{color:white;font-size:32px}
+.ai-left p{color:rgba(255,255,255,0.6);font-size:15px;line-height:1.75;margin-bottom:24px}
+.ai-quote{border-left:3px solid var(--accent);padding-left:20px;font-family:'DM Serif Display',serif;font-size:18px;color:rgba(255,255,255,0.85);font-style:italic;line-height:1.5}
+.ai-right{display:flex;flex-direction:column;gap:14px}
+.ai-row{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;align-items:center}
+.ai-task{font-size:13px;color:rgba(255,255,255,0.8);font-weight:500}
+.ai-me{font-size:12px;color:#4caf88;background:rgba(76,175,136,0.12);padding:3px 10px;border-radius:10px;text-align:center}
+.ai-assist{font-size:12px;color:#9dc6f5;text-align:right}
+.ai-row-header{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;padding:0 20px;margin-bottom:4px}
+.ai-row-header span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,0.3);font-weight:500}
+.ai-row-header span:last-child{text-align:right}
+
+/* ── CONTACT ── */
+.contact-section{padding:80px 48px;text-align:center;background:var(--warm);border-top:1px solid var(--border)}
+.contact-section .section-title{font-size:40px;margin-bottom:12px}
+.contact-section p{color:var(--muted);font-size:16px;max-width:480px;margin:0 auto 36px}
+.contact-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:36px}
+.btn-navy{background:var(--navy);color:white;padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;transition:all 0.2s}
+.btn-navy:hover{background:var(--accent)}
+.btn-outline{background:transparent;color:var(--navy);padding:13px 28px;border-radius:8px;text-decoration:none;font-weight:500;font-size:14px;border:1.5px solid var(--border);transition:all 0.2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.social-row{display:flex;gap:10px;justify-content:center}
+.social-btn{width:40px;height:40px;border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;transition:all 0.2s;font-family:'DM Serif Display',serif}
+.social-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+footer{background:var(--navy);padding:20px 48px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.3)}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);margin:0 48px}
+
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .hero{padding:90px 20px 60px}
+  .hero h1{font-size:36px}
+  .hero-stats{flex-direction:column;gap:24px}
+  .stat-item{border-right:none;padding:0!important;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:16px!important}
+  .skills-strip{padding:16px 20px}
+  .section{padding:52px 20px}
+  .exp-item{grid-template-columns:1fr;gap:8px}
+  .projects-grid{grid-template-columns:1fr}
+  .about-grid{grid-template-columns:1fr}
+  .ai-grid{grid-template-columns:1fr}
+  .contact-section{padding:52px 20px}
+  footer{padding:16px 20px;flex-direction:column;gap:6px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Praneeth Sholapur</span>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-circle1"></div>
+  <div class="hero-bg-circle2"></div>
+  <div class="hero-bg-circle3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="badge-dot"></span>Open to Full-Time Roles · Currently at Liberty Mutual</div>
+    <h1>I turn messy data<br>into <em>decisions<br>that matter.</em></h1>
+    <p class="hero-sub">Data & Business Analyst with 4+ years experience across insurance and healthcare. I build pipelines, dashboards, and analyses that stakeholders actually use — and I document every step so teams can trust the output.</p>
+    <p class="hero-location">California, USA · Available for hybrid & remote roles</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">See My Work</a>
+      <a href="#contact" class="btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><strong>4+</strong><span>Years Experience</span></div>
+      <div class="stat-item"><strong>40%</strong><span>Pipeline Time Saved</span></div>
+      <div class="stat-item"><strong>60%</strong><span>Manual Work Reduced</span></div>
+      <div class="stat-item"><strong>530K+</strong><span>Records Analyzed</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="skills-strip">
+  <span class="strip-label">Stack</span>
+  <span class="skill-pill"><span class="dot" style="background:#3776ab"></span>Python</span>
+  <span class="skill-pill"><span class="dot" style="background:#e48e00"></span>SQL</span>
+  <span class="skill-pill"><span class="dot" style="background:#e97627"></span>Tableau</span>
+  <span class="skill-pill"><span class="dot" style="background:#f2c94c"></span>Power BI</span>
+  <span class="skill-pill"><span class="dot" style="background:#217346"></span>Excel</span>
+  <span class="skill-pill"><span class="dot" style="background:#29b5e8"></span>Snowflake</span>
+  <span class="skill-pill"><span class="dot" style="background:#4285f4"></span>BigQuery</span>
+  <span class="skill-pill"><span class="dot" style="background:#ff694b"></span>dbt</span>
+  <span class="skill-pill"><span class="dot" style="background:#6b3ea6"></span>scikit-learn</span>
+  <span class="skill-pill"><span class="dot" style="background:#4caf88"></span>AI Workflows</span>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="section exp-section" id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've Worked</h2>
+  <p class="section-desc">4+ years across insurance and healthcare — building things that actually get used by stakeholders.</p>
+
+  <div class="exp-timeline">
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">Jan 2025 – Present</div>
+        <div class="exp-company">Liberty Mutual Insurance</div>
+        <div class="exp-location">Brentwood, CA</div>
+        <span class="exp-impact" style="margin-top:16px">Current Role</span>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analyst</div>
+        <ul class="exp-bullets">
+          <li>Rebuilt weekly reporting pipeline using dbt + BigQuery — cut processing time by 40% and improved reliability across 3 business teams</li>
+          <li>Built and maintain Power BI and Tableau dashboards used in recurring executive stakeholder reviews</li>
+          <li>Applied AI-assisted workflows to standardize complex records — reduced manual classification effort by 60%</li>
+          <li>Partner with product, engineering, and business teams to define metrics, document reporting logic, and translate business questions into data outputs</li>
+          <li>Support UAT validation by comparing expected vs actual outputs and documenting defects before release</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">dbt</span><span class="exp-tag">BigQuery</span><span class="exp-tag">Power BI</span><span class="exp-tag">Tableau</span><span class="exp-tag">SQL</span><span class="exp-tag">Python</span><span class="exp-tag">AI Workflows</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-period">Jan 2020 – Jul 2023</div>
+        <div class="exp-company">Sagility</div>
+        <div class="exp-location">Hyderabad, India</div>
+        <span class="exp-impact" style="margin-top:16px">3+ Years · Healthcare</span>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Data Analyst / Quality Analyst</div>
+        <ul class="exp-bullets">
+          <li>Used SQL and Advanced Excel to validate data across multiple source systems — reduced manual data handling by 40%</li>
+          <li>Built Tableau and Power BI dashboards for productivity, quality trends, and operational gap monitoring</li>
+          <li>Conducted root cause analysis on reporting discrepancies — compared source records against final outputs and documented findings</li>
+          <li>Prepared recurring reports and written summaries explaining metric movement and recommended follow-up actions for management</li>
+          <li>Documented workflow steps, report logic, data definitions, and validation procedures for training and audit purposes</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag">SQL</span><span class="exp-tag">Excel</span><span class="exp-tag">Tableau</span><span class="exp-tag">Power BI</span><span class="exp-tag">Root Cause Analysis</span><span class="exp-tag">QA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Real Work. Real Data. Real Insights.</h2>
+  <p class="section-desc">Every project follows the same principle — I define the business question, do the analysis, and deliver a recommendation. AI helps me move faster. The thinking is mine.</p>
+
+  <div class="projects-grid">
+
+    <a href="https://github.com/praneeth7-bot/healthcare-ops-analysis" target="_blank" class="project-card">
+      <div class="project-visual project-visual-1">
+        <span class="project-badge">Python + SQL</span>
+        <div class="vis-bars">
+          <div class="vis-bar" style="height:45%;background:rgba(255,255,255,0.1)"></div>
+          <div class="vis-bar" style="height:70%;background:rgba(42,110,187,0.6)"></div>
+          <div class="vis-bar" style="height:55%;background:rgba(157,198,245,0.4)"></div>
+          <div class="vis-bar" style="height:85%;background:rgba(42,110,187,0.6)"></div>
+          <div class="vis-bar" style="height:60%;background:rgba(255,255,255,0.1)"></div>
+          <div class="vis-bar" style="height:95%;background:rgba(157,198,245,0.4)"></div>
+          <div class="vis-bar" style="height:75%;background:rgba(42,110,187,0.6)"></div>
+          <div class="vis-bar" style="height:50%;background:rgba(255,255,255,0.1)"></div>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-type">Healthcare Operations · End-to-End Analysis</div>
+        <h3>Healthcare Operations Performance Analysis</h3>
+        <p>Analyzed 55,500 patient records to identify operational inefficiencies across admission types, billing, and test result classification. Delivered 3 executive recommendations with measurable impact targets.</p>
+        <div class="project-tags">
+          <span class="ptag">Python</span><span class="ptag">SQL</span><span class="ptag">pandas</span><span class="ptag">matplotlib</span><span class="ptag">SQLite</span>
+        </div>
+        <div class="project-footer">
+          <span>View on GitHub →</span>
+          <span class="ai-badge-small">AI-assisted workflow</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="https://public.tableau.com/app/profile/praneeth.sholapur/viz/E-CommerceSalesAnalysisPraneethSholapur/Dashboard1" target="_blank" class="project-card">
+      <div class="project-visual project-visual-2">
+        <span class="project-badge">Tableau Live ↗</span>
+        <div class="vis-line">
+          <svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="0,65 25,58 50,52 75,48 100,35 125,28 150,15 175,18 200,12" fill="none" stroke="rgba(157,198,245,0.6)" stroke-width="2.5"/>
+            <polyline points="0,65 25,58 50,52 75,48 100,35 125,28 150,15 175,18 200,12" fill="url(#grad)" stroke="none" opacity="0.15"/>
+            <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9dc6f5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs>
+            <circle cx="150" cy="15" r="4" fill="#9dc6f5"/>
+            <circle cx="200" cy="12" r="4" fill="#4caf88"/>
+          </svg>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-type">E-Commerce · Live Tableau Dashboard</div>
+        <h3>E-Commerce Sales & Customer Behavior Analysis</h3>
+        <p>End-to-end analysis of 530,000+ transactions across 38 countries. Uncovered 82% UK revenue concentration, $3K+ international order values, and Q4 seasonality risk. Live interactive dashboard.</p>
+        <div class="project-tags">
+          <span class="ptag">Tableau</span><span class="ptag">Python</span><span class="ptag">SQL</span><span class="ptag">pandas</span><span class="ptag">E-Commerce</span>
+        </div>
+        <div class="project-footer">
+          <span>View live dashboard →</span>
+          <span class="ai-badge-small">AI-assisted workflow</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- AI METHODOLOGY -->
+<section class="ai-section">
+  <div class="ai-grid">
+    <div class="ai-left">
+      <p class="section-label">My Approach</p>
+      <h2 class="section-title">How I work with AI</h2>
+      <p>I use AI as a force multiplier — not a replacement for analyst thinking. Every project I document exactly what I did vs what AI assisted with. This transparency is intentional.</p>
+      <p>It shows I understand the tools, own the outputs, and think critically about both. The business question, the insight, and the recommendation are always mine.</p>
+      <div class="ai-quote">"AI helped me work faster — not think for me."</div>
+    </div>
+    <div class="ai-right">
+      <div class="ai-row-header">
+        <span>Task</span><span style="text-align:center">My role</span><span>AI assistance</span>
+      </div>
+      <div class="ai-row">
+        <span class="ai-task">Define business questions</span>
+        <span class="ai-me">Me</span>
+        <span class="ai-assist" style="color:rgba(255,255,255,0.3);font-size:12px">—</span>
+      </div>
+      <div class="ai-row">
+        <span class="ai-task">Data cleaning & validation</span>
+        <span class="ai-me">Me</span>
+        <span class="ai-assist">Edge case suggestions</span>
+      </div>
+      <div class="ai-row">
+        <span class="ai-task">SQL & Python analysis</span>
+        <span class="ai-me">Me</span>
+        <span class="ai-assist">Query acceleration</span>
+      </div>
+      <div class="ai-row">
+        <span class="ai-task">Chart design & storytelling</span>
+        <span class="ai-me">Me</span>
+        <span class="ai-assist" style="color:rgba(255,255,255,0.3);font-size:12px">—</span>
+      </div>
+      <div class="ai-row">
+        <span class="ai-task">Business recommendations</span>
+        <span class="ai-me">Me</span>
+        <span class="ai-assist">Format structuring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-left">
+      <div class="about-photo">
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="22" r="14" fill="white"/>
+            <ellipse cx="32" cy="54" rx="22" ry="14" fill="white"/>
+          </svg>
+          <span>Add your photo</span>
+        </div>
+      </div>
+      <div class="about-contact">
+        <a href="mailto:sholapurpraneeth7@gmail.com" class="contact-item">
+          <div class="contact-icon">✉️</div>
+          sholapurpraneeth7@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/praneeth-sholapur-1b89062a3" target="_blank" class="contact-item">
+          <div class="contact-icon">in</div>
+          linkedin.com/in/praneeth-sholapur
+        </a>
+        <a href="https://github.com/praneeth7-bot" target="_blank" class="contact-item">
+          <div class="contact-icon">GH</div>
+          github.com/praneeth7-bot
+        </a>
+        <a href="https://public.tableau.com/app/profile/praneeth.sholapur" target="_blank" class="contact-item">
+          <div class="contact-icon">TB</div>
+          Tableau Public Profile
+        </a>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          California, USA
+        </div>
+      </div>
+    </div>
+
+    <div class="about-right">
+      <p class="section-label">About</p>
+      <h2 class="section-title" style="font-size:30px;margin-bottom:20px">Analyst. Problem solver.<br>Business-minded.</h2>
+      <p>I'm Praneeth Sholapur, a Data & Business Analyst currently at Liberty Mutual Insurance in California. I hold an MS in Business Analytics from University of the Pacific and have 4+ years of experience turning messy, complex data into clear decisions.</p>
+      <p>I work across the full analytics stack — from writing SQL queries and building dbt pipelines to designing executive dashboards and delivering stakeholder presentations. What I care most about is the business question behind the data.</p>
+
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Analytics & BI</div>
+          <div class="skill-list">
+            <span>SQL · Advanced Excel</span>
+            <span>Power BI · Tableau</span>
+            <span>Python (pandas, numpy)</span>
+            <span>Statistical Analysis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Data Engineering</div>
+          <div class="skill-list">
+            <span>dbt · BigQuery</span>
+            <span>Snowflake · PostgreSQL</span>
+            <span>ETL/ELT Concepts</span>
+            <span>Pipeline Development</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Business Analysis</div>
+          <div class="skill-list">
+            <span>Requirements Gathering</span>
+            <span>KPI Reporting · UAT</span>
+            <span>Process Improvement</span>
+            <span>Stakeholder Comms</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI & Automation</div>
+          <div class="skill-list">
+            <span>AI-assisted workflows</span>
+            <span>Python automation</span>
+            <span>scikit-learn concepts</span>
+            <span>Prompt engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-bottom:14px">Education</p>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-info">
+          <strong>MS Business Analytics</strong>
+          <span>University of the Pacific · Stockton, CA · 2023–2024</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-info">
+          <strong>Bachelor of Computer Applications</strong>
+          <span>Bhavans Vivekananda College · Hyderabad · 2018–2021</span>
+        </div>
+      </div>
+
+      <p class="section-label" style="margin-bottom:14px;margin-top:28px">Certifications</p>
+      <div class="cert-item">
+        <span class="cert-icon">🏅</span>
+        <div class="cert-info">
+          <strong>Microsoft Power BI Data Analyst Associate</strong>
+          <span>Microsoft · 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <p class="section-label">Contact</p>
+  <h2 class="section-title">Let's work together</h2>
+  <p>Recruiter, hiring manager, or someone with an interesting data problem — I'd love to connect and show you what I can do.</p>
+  <div class="contact-actions">
+    <a href="mailto:sholapurpraneeth7@gmail.com" class="btn-navy">Send an Email</a>
+    <a href="https://linkedin.com/in/praneeth-sholapur-1b89062a3" target="_blank" class="btn-outline">Connect on LinkedIn</a>
+  </div>
+  <div class="social-row">
+    <a class="social-btn" href="https://linkedin.com/in/praneeth-sholapur-1b89062a3" target="_blank">in</a>
+    <a class="social-btn" href="https://github.com/praneeth7-bot" target="_blank">GH</a>
+    <a class="social-btn" href="https://public.tableau.com/app/profile/praneeth.sholapur" target="_blank">TB</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2025 Praneeth Sholapur · California, USA</span>
+  <span>Data & Business Analyst · Built to stand out</span>
+</footer>
+
+</body>
+</html>
